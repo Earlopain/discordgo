@@ -91,17 +91,19 @@ func (u *User) Mention() string {
 }
 
 // AvatarURL returns a URL to the user's avatar.
-//    size:    The size of the user's avatar as a power of two
-//             if size is an empty string, no size parameter will
-//             be added to the URL.
+//
+//	size:    The size of the user's avatar as a power of two
+//	         if size is an empty string, no size parameter will
+//	         be added to the URL.
 func (u *User) AvatarURL(size string) string {
 	return avatarURL(u.Avatar, EndpointDefaultUserAvatar(u.Discriminator),
 		EndpointUserAvatar(u.ID, u.Avatar), EndpointUserAvatarAnimated(u.ID, u.Avatar), size)
 }
 
 // BannerURL returns the URL of the users's banner image.
-//    size:    The size of the desired banner image as a power of two
-//             Image size can be any power of two between 16 and 4096.
+//
+//	size:    The size of the desired banner image as a power of two
+//	         Image size can be any power of two between 16 and 4096.
 func (u *User) BannerURL(size string) string {
 	return bannerURL(u.Banner, EndpointUserBanner(u.ID, u.Banner), EndpointUserBannerAnimated(u.ID, u.Banner), size)
 }
