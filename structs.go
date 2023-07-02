@@ -1835,7 +1835,7 @@ const (
 	AuditLogActionAutoModerationUserCommunicationDisabled AuditLogAction = 145
 )
 
-// GuildMemberParams stores data needed to update a member
+// stores data needed to update a member
 // https://discord.com/developers/docs/resources/guild#modify-guild-member
 type GuildMemberParams struct {
 	// Value to set user's nickname to.
