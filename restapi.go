@@ -94,7 +94,7 @@ func (e RateLimitError) Error() string {
 	return "Rate limit exceeded on " + e.URL + ", retry after " + e.RetryAfter.String()
 }
 
-// RequestConfig is an HTTP request configuration.
+// is an HTTP request configuration.
 type RequestConfig struct {
 	Request                *http.Request
 	ShouldRetryOnRateLimit bool
