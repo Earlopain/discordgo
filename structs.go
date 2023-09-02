@@ -1752,6 +1752,7 @@ type AuditLogOptions struct {
 	ApplicationID                 string               `json:"application_id"`
 	AutoModerationRuleName        string               `json:"auto_moderation_rule_name"`
 	AutoModerationRuleTriggerType string               `json:"auto_moderation_rule_trigger_type"`
+	Status                        string               `json:"status"`
 }
 
 // AuditLogOptionsType of the AuditLogOption
