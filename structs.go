@@ -288,7 +288,9 @@ const (
 	ChannelTypeGuildPublicThread  ChannelType = 11
 	ChannelTypeGuildPrivateThread ChannelType = 12
 	ChannelTypeGuildStageVoice    ChannelType = 13
+	ChannelTypeGuildDirectory     ChannelType = 14
 	ChannelTypeGuildForum         ChannelType = 15
+	ChannelTypeGuildMedia         ChannelType = 16
 )
 
 // ChannelFlags represent flags of a channel/thread.
@@ -1274,6 +1276,14 @@ type UserGuild struct {
 	Owner       bool           `json:"owner"`
 	Permissions int64          `json:"permissions,string"`
 	Features    []GuildFeature `json:"features"`
+
+	// Approximate number of members in this guild.
+	// NOTE: this field is only filled when withCounts is true.
+	ApproximateMemberCount int `json:"approximate_member_count"`
+
+	// Approximate number of non-offline members in this guild.
+	// NOTE: this field is only filled when withCounts is true.
+	ApproximatePresenceCount int `json:"approximate_presence_count"`
 }
 
 // GuildFeature indicates the presence of a feature in a guild
@@ -1363,19 +1373,19 @@ type Role struct {
 	// The emoji assigned to this role.
 	UnicodeEmoji string `json:"unicode_emoji"`
 
-	// The flags of the role, which describe extra features of a role.
-	// This is a combination of bit masks; the presence of a certain permission can
+	// The flags of the role, which describe its extra features.
+	// This is a combination of bit masks; the presence of a certain flag can
 	// be checked by performing a bitwise AND between this int and the flag.
 	Flags RoleFlags `json:"flags"`
 }
 
-// RoleFlags is the flags of "role" (see RoleFlags* consts)
+// RoleFlags represent the flags of a Role.
 // https://discord.com/developers/docs/topics/permissions#role-object-role-flags
 type RoleFlags int
 
-// Block containing known RoleFlags values
+// Block containing known RoleFlags values.
 const (
-	// MessageFlagsCrossPosted Role can be selected by members in an onboarding prompt.
+	// RoleFlagInPrompt indicates whether the Role is selectable by members in an onboarding prompt.
 	RoleFlagInPrompt RoleFlags = 1 << 0
 )
 
